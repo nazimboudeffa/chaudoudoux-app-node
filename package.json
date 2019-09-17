@@ -1,15 +1,17 @@
 {
   "name": "team-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application to manage users and services",
   "main": "app.js",
   "dependencies": {
+    "express": "^4.17.1",
     "mysql": "^2.17.1"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Chaudoudoux",
   "license": "ISC"
 }
