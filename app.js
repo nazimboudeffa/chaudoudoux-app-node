@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const ejs = require('ejs');
 
 const app = express();
 var pass = require('../config-chaudoudoux.js');
@@ -16,11 +17,26 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
+app.set('view engine', 'ejs');
+
+app.use(express.urlencoded())
+
 app.get('/', function (req, res) {
-  res.send("Hello Chaudoudoux! The database state is " + con.state + " ...");
+  res.send("Welcome to Chaudoudoux!");
 })
 
-app.get('/insert', function (req, res) {
+app.get('/admin', function (req, res) {
+  res.render('index');
+})
+
+app.post('/admin/login', function (req,res) {
+  var username = 'chaudoudoux';
+  var pass = req.body.password;
+  console.log(pass);
+  res.end("Hello " + username + "! The database state is " + con.state + " ...");
+});
+
+app.get('/admin/insert', function (req, res) {
   var sql = "INSERT INTO cdd_users (id, first_name, last_name, address, zip_code, city) VALUES ('1234', 'Jaques', 'Chabrol', '42, Rue Jean Jaurès', '35700', 'Rennes')";
   con.query(sql, function (err, result) {
     if (err) throw err;
@@ -29,7 +45,7 @@ app.get('/insert', function (req, res) {
   });
 })
 
-app.get('/list', function (req, res) {
+app.get('/admin/list', function (req, res) {
   con.query("SELECT * FROM cdd_users", function (err, result, fields) {
     if (err) throw err;
     //console.log(result);
@@ -37,7 +53,7 @@ app.get('/list', function (req, res) {
   });
 })
 
-app.get('/delete', function (req, res) {
+app.get('/admin/delete', function (req, res) {
   var sql = "DELETE FROM cdd_users WHERE first_name = 'Jaques'";
   con.query(sql, function (err, result) {
     if (err) throw err;
