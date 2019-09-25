@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const ejs = require('ejs');
+const passport = require('passport');
 const CryptoJS = require('crypto-js');
 
 const app = express();
@@ -9,7 +10,7 @@ var con;
 
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded())
+app.use(require('body-parser').urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
 
