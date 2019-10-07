@@ -11,18 +11,17 @@
 <body>
 
 <div class="container">
-	<% if (!user) { %>
-		<h2>Welcome!</h2> <p>Please <a href="/login">log in</a>.
-		<p>Don't have an account ? <a href="/signup">Sign up</a>.</p>
-	<% } else { %>
-		<h2>Hello, <%= user.username %></h2>
-    <p>
-      View your <a href="/profile">profile</a>.
-      <br>
-      View your <a href="/tasks">tasks</a>.
-    </p>
-    <a href="/logout">Log out</a>
-	<% } %>
+  <h2>My tasks</h2>
+  <p>
+    <div class="custom-control custom-checkbox">
+        <label class="custom-control-label" for="defaultUnchecked"><%= tasks[0].name %></label>
+        <input type="checkbox" class="custom-control-input" id="<%= tasks[0].id %>">
+    </div>
+    <div class="custom-control custom-checkbox">
+        <label class="custom-control-label" for="defaultUnchecked"><%= tasks[1].name %></label>
+        <input type="checkbox" class="custom-control-input" id="<%= tasks[0].id %>">
+    </div>
+  </p>
 </div>
 
 </body>

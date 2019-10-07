@@ -10,11 +10,11 @@ con = mysql.createConnection({
   database: "chaudoudoux"
 });
 
-con.query("SELECT * FROM cdd_interveners", function (err, result, fields) {
+con.query("SELECT * FROM cdd_tasks", function (err, result, fields) {
   records = result;
 });
 
-exports.findById = function(id, cb) {
+exports.findByTaskId = function(id, cb) {
   process.nextTick(function() {
     console.log(records);
     var idx = id - 1;
@@ -26,11 +26,11 @@ exports.findById = function(id, cb) {
   });
 }
 
-exports.findByUsername = function(username, cb) {
+exports.findByTaskName = function(name, cb) {
   process.nextTick(function() {
     for (var i = 0, len = records.length; i < len; i++) {
       var record = records[i];
-      if (record.username === username) {
+      if (record.name === name) {
         return cb(null, record);
       }
     }

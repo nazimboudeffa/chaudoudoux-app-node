@@ -84,7 +84,14 @@ app.get('/logout',
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('profile', { user: req.user});
+  });
+
+app.get('/tasks',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    var tasks = [{"id":1, "name":"Acheter le pain"}, {"id":2, "name":"Prendre un café"}];
+    res.render('tasks', { tasks: tasks });
   });
 
 app.get('/signup', function (req, res) {
@@ -119,7 +126,7 @@ app.post('/signin', function (req, res) {
   // We do an MD5 hash of the password because passwords are stored this way
   var password = CryptoJS.MD5(req.body.password);
 
-  con.query("SELECT * FROM cdd_interveners WHERE username = '" + username + "'", function (err, result, fields) {
+  con.query("SELECT * FROM cdd_users WHERE username = '" + username + "'", function (err, result, fields) {
     if (err) throw err;
     if (result.length != 0) {
       if (result[0].password == password) {
@@ -163,9 +170,9 @@ app.post('/admin/login', function (req,res) {
 
 });
 
-app.get('/admin/users/insert', function (req, res) {
+app.get('/admin/profiles/insert', function (req, res) {
 
-  var sql = "INSERT INTO cdd_users (id, first_name, last_name, address, zip_code, city) VALUES ('1234', 'Jaques', 'Chabrol', '42, Rue Jean Jaurès', '35700', 'Rennes')";
+  var sql = "INSERT INTO cdd_profile (id, first_name, last_name, address, zip_code, city) VALUES ('1234', 'Jaques', 'Chabrol', '42, Rue Jean Jaurès', '35700', 'Rennes')";
   con.query(sql, function (err, result) {
     if (err) throw err;
     //console.log("1 record inserted");
@@ -174,9 +181,9 @@ app.get('/admin/users/insert', function (req, res) {
 
 })
 
-app.get('/admin/users/list', function (req, res) {
+app.get('/admin/profiles/list', function (req, res) {
 
-  con.query("SELECT * FROM cdd_users", function (err, result, fields) {
+  con.query("SELECT * FROM cdd_profile", function (err, result, fields) {
     if (err) throw err;
     //console.log(result);
     res.send(result);
@@ -184,7 +191,7 @@ app.get('/admin/users/list', function (req, res) {
 
 })
 
-app.get('/admin/users/delete', function (req, res) {
+app.get('/admin/profiles/delete', function (req, res) {
 
   var sql = "DELETE FROM cdd_users WHERE first_name = 'Jaques'";
   con.query(sql, function (err, result) {
@@ -196,9 +203,9 @@ app.get('/admin/users/delete', function (req, res) {
 })
 
 
-app.get('/admin/interveners/delete', function (req, res) {
+app.get('/admin/users/delete', function (req, res) {
 
-  var sql = "DELETE FROM cdd_interveners WHERE username = 'unicorn2'";
+  var sql = "DELETE FROM cdd_users WHERE username = 'unicorn2'";
   con.query(sql, function (err, result) {
     if (err) throw err;
     //console.log("Number of records deleted: " + result.affectedRows);
