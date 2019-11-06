@@ -5,6 +5,10 @@ const passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
 const CryptoJS = require('crypto-js');
+const config = require('./config')
+
+console.log(config);
+console.log(config.user);
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -106,9 +110,9 @@ app.get('/signup', function (req, res) {
 app.get('/signin', function (req, res) {
 
   con = mysql.createConnection({
-    host: "164.132.103.232",
-    user: "unicorn",
-    password: "IAM_ateapot101",
+    host: "localhost",
+    user: "root",
+    password: "",
     database: "chaudoudoux"
   });
 
@@ -156,10 +160,10 @@ app.post('/admin/login', function (req,res) {
   console.log(pass);
 
   con = mysql.createConnection({
-    host: "164.132.103.232",
-    user: "chaudoudoux",
-    password: pass,
-    database: "chaudoudoux"
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database
   });
 
   con.connect(function(err) {
