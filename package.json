@@ -20,6 +20,6 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chaudoudoux",
+  "author": "La Maison des Chaudoudoux",
   "license": "cc-by-4.0"
 }

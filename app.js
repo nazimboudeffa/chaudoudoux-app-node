@@ -5,10 +5,6 @@ const passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
 const CryptoJS = require('crypto-js');
-const config = require('./config')
-
-console.log(config);
-console.log(config.user);
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -24,8 +20,11 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
-//var pass = require('../config-chaudoudoux.js');
 var con;
+const config = require('./config.json');
+//const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
+
+console.log(config);
 
 // Configure the local strategy for use by Passport.
 //
