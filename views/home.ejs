@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Sign in Form with Facebook and Twitter Buttons</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<div class="container">
 	<% if (!user) { %>
-		<h2>Welcome!</h2> <p>Please <a href="/login">log in</a>.
-		<p>Don't have an account ? <a href="/signup">Sign up</a>.</p>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="jumbotron">
+            <h1>Chaudoudoux App Intervenants <span style="color : #ff3366">v0.1</span> DEMO</h1>
+            <p>La version de démonstration est volontairement restreinte à quelques fonctionalités</p>
+            <p>Pour les besoins de la démonstration et pour des raisons de sécurité les données affichées sont aussi volontairement fictives et sont remises par defaut chaque jour avec des données choisies par nos soins</p>
+            <p>Pour vous connecter à cette démonstration, l'utilisateur est <span style="color : #ff3366">licorne</span> et le mot de passe <span style="color : #ff3366">licorne</span></p>
+          </div>
+        </div>
+      </div>
 	<% } else { %>
-		<h2>Hello, <%= user.username %></h2>
-    <p>
-      View your <a href="/profile">profile</a>.
-      <br>
-      View your <a href="/tasks">tasks</a>.
-    </p>
-    <a href="/logout">Log out</a>
+    <div class="container">
+  		<h2>Welcome, <%= user.username %></h2>
+      <p>
+        View your <a href="/profile">profile</a>.
+        <br>
+        View your <a href="/tasks">tasks</a>.
+      </p>
+      <a href="/logout">Log out</a>
+    </div>
 	<% } %>
-</div>
+
 
 </body>
 </html>

@@ -66,37 +66,53 @@
 </style>
 </head>
 <body>
-<div class="login-form">
-    <form action="/login" method="post">
-        <h2 class="text-center">Sign in</h2>
-        <div class="form-group">
-        	<div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-            </div>
-        </div>
-		<div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-            </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary login-btn btn-block">Sign in</button>
-        </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <a href="#" class="pull-right">Forgot Password?</a>
-        </div>
-		<div class="or-seperator"><i>or</i></div>
-        <p class="text-center">Login with your social media account</p>
-        <div class="text-center social-btn">
-            <a href="/login" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
-            
-						<a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
-        </div>
-    </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="/signup">Sign up here!</a></p>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
+			<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+		</ul>
+	</div>
+</nav>
+<div class="container">
+	<div class="login-form">
+	    <form action="/login" method="post">
+	        <h2 class="text-center">Sign in</h2>
+	        <div class="form-group">
+	        	<div class="input-group">
+	                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+	                <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+	            </div>
+	        </div>
+			<div class="form-group">
+	            <div class="input-group">
+	                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+	                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <button type="submit" class="btn btn-primary login-btn btn-block">Sign in</button>
+	        </div>
+	        <div class="clearfix">
+	            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+	            <a href="#" class="pull-right">Forgot Password?</a>
+	        </div>
+			<div class="or-seperator"><i>or</i></div>
+	        <p class="text-center">Login with your social media account</p>
+	        <div class="text-center social-btn">
+	            <a href="/login" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+
+							<a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
+	        </div>
+	    </form>
+	    <p class="text-center text-muted small">Don't have an account? <a href="/signup">Sign up here!</a></p>
+	</div>
 </div>
 </body>
 </html>
