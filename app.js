@@ -21,10 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var con;
-//const config = require('./config.json');
-const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
-
-console.log(config);
+const config = require('./config.json');
+//const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 // Configure the local strategy for use by Passport.
 //
