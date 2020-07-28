@@ -21,8 +21,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var con;
-const config = require('./config.json');
-//const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
+//const config = require('./config.json');
+const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 // Configure the local strategy for use by Passport.
 //
@@ -107,10 +107,10 @@ app.get('/signup', function (req, res) {
 app.get('/signin', function (req, res) {
 
   con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "chaudoudoux"
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database
   });
 
   res.render('signin');
