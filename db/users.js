@@ -1,5 +1,6 @@
 const mysql = require('mysql');
-const config = require('../config');
+//const config = require('./config.json');
+const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 var con;
 var records;

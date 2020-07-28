@@ -1,13 +1,15 @@
 const mysql = require('mysql');
+//const config = require('./config.json');
+const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 var con;
 var records;
 
 con = mysql.createConnection({
-  host: "164.132.103.232",
-  user: "unicorn",
-  password: "IAM_ateapot101",
-  database: "chaudoudoux"
+  host: config.host,
+  user: config.user,
+  password: config.password,
+  database: config.database
 });
 
 con.query("SELECT * FROM cdd_tasks", function (err, result, fields) {
