@@ -9,6 +9,8 @@ const CryptoJS = require('crypto-js');
 const app = express();
 app.set('view engine', 'ejs');
 
+app.use('/', express.static(__dirname + '/public'));
+
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
 app.use(require('morgan')('combined'));
@@ -101,9 +103,6 @@ app.get('/signup', function (req, res) {
 
 })
 
-/**
- This is just for testing purposes, we'll use passportjs instead
-*/
 app.get('/signin', function (req, res) {
 
   con = mysql.createConnection({
@@ -127,11 +126,21 @@ app.post('/signin', function (req, res) {
   // We do an MD5 hash of the password because passwords are stored this way
   var password = CryptoJS.MD5(req.body.password);
 
+  con = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database,
+  });
+
+  con.connect();
+
   con.query("SELECT * FROM cdd_users WHERE username = '" + username + "'", function (err, result, fields) {
     if (err) throw err;
     if (result.length != 0) {
       if (result[0].password == password) {
-        res.send(result);
+        //res.send(result);
+        res.redirect('dashboard');
       } else {
         res.send("Wrong Password");
       }
@@ -143,6 +152,11 @@ app.post('/signin', function (req, res) {
 })
 // END TEST
 
+app.get('/dashboard', function (req, res) {
+
+  res.render('dashboard');
+
+})
 
 app.get('/admin', function (req, res) {
 
