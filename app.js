@@ -140,7 +140,11 @@ app.post('/signin', function (req, res) {
     if (result.length != 0) {
       if (result[0].password == password) {
         //res.send(result);
-        res.redirect('dashboard');
+        if (result[0].id == '1') {
+          res.redirect('admin');
+        } else {
+          res.redirect('dashboard');
+        }
       } else {
         res.send("Wrong Password");
       }
