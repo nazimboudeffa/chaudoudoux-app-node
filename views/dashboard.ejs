@@ -103,6 +103,7 @@
   </head>
   <body>
 
+<% if (loged) { %>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -111,9 +112,12 @@
         <ul class="nav navbar-nav">
           <li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
         </ul>
+        <ul class="nav navbar-nav">
+          <li><a href="/"><span class="glyphicon glyphicon-home"></span> Dashboard</a></a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
-          <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+          <li><a href="/signin"><span class="glyphicon glyphicon-log-out"></span> Se Déconnecter</a></li>
         </ul>
       </div>
     </nav>
@@ -122,5 +126,31 @@
         <div id='calendar'></div>
       </div>
     </div>
+<% } else { %>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
+        <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="jumbotron">
+        <h1>Chaudoudoux App Intervenants <span style="color : #ff3366">v0.1</span> DEMO</h1>
+        <p>La version de démonstration est volontairement restreinte à quelques fonctionalités</p>
+        <p>Pour les besoins de la démonstration et pour des raisons de sécurité les données affichées sont aussi volontairement fictives et sont remises par defaut chaque jour avec des données choisies par nos soins</p>
+        <p>Pour vous connecter à cette démonstration, l'utilisateur est <span style="color : #ff3366">unicorn1</span> et le mot de passe <span style="color : #ff3366">IAMateapot101</span></p>
+      </div>
+    </div>
+  </div>
+<% } %>
   </body>
 </html>

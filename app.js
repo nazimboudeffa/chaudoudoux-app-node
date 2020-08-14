@@ -22,9 +22,10 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
+var loged = false;
 var con;
-//const config = require('./config.json');
-const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
+const config = require('./config.json');
+//const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 // Configure the local strategy for use by Passport.
 //
@@ -98,6 +99,13 @@ app.get('/tasks',
   });
 
 app.get('/signup', function (req, res) {
+  
+  con.end();
+  res.redirect('/');
+
+})
+
+app.get('/signout', function (req, res) {
 
   res.render('signup');
 
@@ -140,6 +148,7 @@ app.post('/signin', function (req, res) {
     if (result.length != 0) {
       if (result[0].password == password) {
         //res.send(result);
+        loged = true;
         if (result[0].id == '1') {
           res.redirect('admin');
         } else {
@@ -158,7 +167,7 @@ app.post('/signin', function (req, res) {
 
 app.get('/dashboard', function (req, res) {
 
-  res.render('dashboard');
+  res.render('dashboard', { loged: loged});
 
 })
 
