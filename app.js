@@ -24,8 +24,8 @@ app.use(passport.session());
 
 var loged = false;
 var con;
-//const config = require('./config.json');
-const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
+const config = require('./config.json');
+//const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
 
 // Configure the local strategy for use by Passport.
 //
@@ -168,6 +168,12 @@ app.post('/signin', function (req, res) {
 app.get('/dashboard', function (req, res) {
 
   res.render('dashboard', { loged: loged});
+
+})
+
+app.get('/report', function (req, res) {
+
+  res.render('report');
 
 })
 
