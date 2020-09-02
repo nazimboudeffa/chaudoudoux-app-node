@@ -88,7 +88,7 @@ app.get('/logout',
 app.get('/profile',
   //require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { loged: loged});
+    res.render('profile', { logged: logged});
   });
 
 app.get('/tasks',
@@ -148,7 +148,7 @@ app.post('/signin', function (req, res) {
     if (result.length != 0) {
       if (result[0].password == password) {
         //res.send(result);
-        loged = true;
+        logged = true;
         if (result[0].id == '1') {
           res.redirect('admin');
         } else {
