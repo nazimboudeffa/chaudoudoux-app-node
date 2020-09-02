@@ -167,13 +167,13 @@ app.post('/signin', function (req, res) {
 
 app.get('/dashboard', function (req, res) {
 
-  res.render('dashboard', { loged: loged});
+  res.render('dashboard', { logged: logged});
 
 })
 
 app.get('/report', function (req, res) {
 
-  res.render('report');
+  res.render('report', { logged: logged});
 
 })
 
