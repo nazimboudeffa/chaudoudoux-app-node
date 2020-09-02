@@ -22,7 +22,7 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
-var loged = false;
+var logged = false;
 var con;
 const config = require('./config.json');
 //const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
