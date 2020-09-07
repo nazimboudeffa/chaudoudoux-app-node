@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+require('dotenv').config();
 const ejs = require('ejs');
 const passport = require('passport');
 var Strategy = require('passport-local').Strategy;
