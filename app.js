@@ -64,10 +64,30 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/', function (req, res) {
+  res.render('index');
+});
 
-  res.render('home', { user: req.user });
+app.get('/home', function (req, res) {
 
-})
+  con = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database,
+  });
+
+  con.connect();
+
+  con.query("SELECT * FROM cdd_trainings", function (err, results, fields) {
+    if (err) throw err;
+    if (results.length != 0) {
+      res.render('home', { trainings: results });
+    } else {
+      res.send("There is no training");
+    }
+  });
+
+});
 
 app.get('/login',
   function(req, res){

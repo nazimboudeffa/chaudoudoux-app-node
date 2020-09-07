@@ -13,7 +13,6 @@
 </head>
 <body>
 
-	<% if (!user) { %>
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -30,25 +29,22 @@
       </nav>
       <div class="container">
         <div class="row">
-          <div class="jumbotron">
-            <h1>Chaudoudoux App Intervenants <span style="color : #ff3366">v0.1</span> DEMO</h1>
-            <p>La version de démonstration est volontairement restreinte à quelques fonctionalités</p>
-            <p>Pour les besoins de la démonstration et pour des raisons de sécurité les données affichées sont aussi volontairement fictives et sont remises par defaut chaque jour avec des données choisies par nos soins</p>
-            <p>Pour vous connecter à cette démonstration, l'utilisateur est <span style="color : #ff3366">unicorn1</span> et le mot de passe <span style="color : #ff3366">IAMateapot101</span></p>
-          </div>
+          <table class="table">
+           <tr>
+             <th>Titre</th>
+             <th>Description</th>
+           </tr>
+
+             <% trainings.forEach(function(training){ %>
+               <tr>
+                 <td><%= training.title %></td>
+                 <td><%= training.description %></td>
+               </tr>
+             <% })%>
+
+          </table>
         </div>
       </div>
-	<% } else { %>
-    <div class="container">
-  		<h2>Welcome, <%= user.username %></h2>
-      <p>
-        View your <a href="/profile">profile</a>.
-        <br>
-        View your <a href="/tasks">tasks</a>.
-      </p>
-      <a href="/logout">Log out</a>
-    </div>
-	<% } %>
 
 
 </body>
