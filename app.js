@@ -64,7 +64,7 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('index' , { logged: logged});
 });
 
 app.get('/home', function (req, res) {
@@ -81,7 +81,7 @@ app.get('/home', function (req, res) {
   con.query("SELECT * FROM cdd_trainings", function (err, results, fields) {
     if (err) throw err;
     if (results.length != 0) {
-      res.render('home', { trainings: results });
+      res.render('home', { logged: logged, trainings: results });
     } else {
       res.send("There is no training");
     }
@@ -128,6 +128,8 @@ app.get('/signup', function (req, res) {
 
 app.get('/signout', function (req, res) {
 
+  con.end();
+  logged = false;
   res.render('signup');
 
 })

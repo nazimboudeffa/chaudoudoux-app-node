@@ -13,38 +13,26 @@
 </head>
 <body>
 
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
-            <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <table class="table">
+  <%- include partials/header.ejs %>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+       <tr>
+         <th>Titre</th>
+         <th>Description</th>
+       </tr>
+
+         <% trainings.forEach(function(training){ %>
            <tr>
-             <th>Titre</th>
-             <th>Description</th>
+             <td><%= training.title %></td>
+             <td><%= training.description %></td>
            </tr>
+         <% })%>
 
-             <% trainings.forEach(function(training){ %>
-               <tr>
-                 <td><%= training.title %></td>
-                 <td><%= training.description %></td>
-               </tr>
-             <% })%>
-
-          </table>
-        </div>
-      </div>
+      </table>
+    </div>
+  </div>
 
 
 </body>
