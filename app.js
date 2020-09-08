@@ -121,8 +121,7 @@ app.get('/tasks',
 
 app.get('/signup', function (req, res) {
 
-  con.end();
-  res.redirect('/');
+  res.render('signup');
 
 })
 
