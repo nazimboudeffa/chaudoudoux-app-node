@@ -125,6 +125,34 @@ app.get('/signup', function (req, res) {
 
 })
 
+app.post('/signup', function (req, res) {
+
+  console.log(req.body.username);
+  console.log(req.body.password);
+
+  var username = req.body.username;
+
+  // We do an MD5 hash of the password because passwords are stored this way
+  var password = CryptoJS.MD5(req.body.password);
+
+  con = mysql.createConnection({
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database,
+  });
+
+  con.connect();
+
+  var sql = "INSERT INTO cdd_users (id, username, password, email) VALUES ('"+Date.now()+"','"+req.body.username+"','"+CryptoJS.MD5(req.body.password)+"','"+req.body.email+"')";
+
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    res.send("Please wait for a phone call or Email");
+  });
+
+})
+
 app.get('/signout', function (req, res) {
 
   con.end();
@@ -206,10 +234,6 @@ app.get('/admin', function (req, res) {
 })
 
 app.post('/admin/login', function (req,res) {
-
-  var username = 'chaudoudoux';
-  var pass = req.body.password;
-  console.log(pass);
 
   con = mysql.createConnection({
     host: config.host,
