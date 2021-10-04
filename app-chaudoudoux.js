@@ -139,10 +139,10 @@ app.post('/signup', function (req, res) {
   var password = CryptoJS.MD5(req.body.password);
 
   con = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
   });
 
   con.connect();
@@ -167,10 +167,10 @@ app.get('/signout', function (req, res) {
 app.get('/signin', function (req, res) {
 
   con = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
   });
 
   res.render('signin');
@@ -188,10 +188,10 @@ app.post('/signin', function (req, res) {
   var password = CryptoJS.MD5(req.body.password);
 
   con = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
   });
 
   con.connect();
@@ -239,10 +239,10 @@ app.get('/admin', function (req, res) {
 app.post('/admin/login', function (req,res) {
 
   con = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
   });
 
   con.connect(function(err) {
