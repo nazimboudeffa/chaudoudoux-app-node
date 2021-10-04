@@ -13,19 +13,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="/home"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
-      </ul>
-    </div>
-  </nav>
+  <%- include partials/header.ejs %>
   
   <div class="container">
     <div class="row">
@@ -36,6 +24,10 @@
       </div>
     </div>
   </div>
+
+  <script>
+    console.log('<%- logged -%>'+'value')
+  </script>
 
 </body>
 </html>

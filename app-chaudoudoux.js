@@ -76,13 +76,14 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/', function (req, res) {
-  sess=req.session;
+  sess = req.session;
   res.render('index');
 });
 
 app.get('/home', function (req, res) {
-  sess=req.session;
-  res.render('home');
+  sess = req.session;
+  console.log(req.session + ' ' + sess.username)
+  res.render('home', {logged : sess.username});
 /*
   con = mysql.createConnection({
     host: config.host,
@@ -108,7 +109,7 @@ app.get('/home', function (req, res) {
 
 app.get('/login', function(req, res){
   sess = req.session;
-  if(sess.email){
+  if(sess.username){
     res.redirect('dashboard');
   } else {
     res.render('login');
@@ -117,7 +118,7 @@ app.get('/login', function(req, res){
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
   sess = req.session;
-  sess.email = req.body.email;
+  sess.username = req.body.username;
   res.redirect('/');
 });
 
@@ -169,19 +170,19 @@ app.post('/signup', function (req, res) {
 
 app.get('/signout', function (req, res) {
 
-  con.end();
+  //con.end();
   req.session.destroy(function(err) {
     if(err) {
       console.log(err);
     } else {
-      res.redirect('/');
+      res.redirect('/home');
     }
   });
 })
 
 app.get('/signin', function (req, res) {
   sess = req.session;
-  if(sess.email){
+  if(sess.username){
     res.render('profile');
   } else {
     res.render('signin');
@@ -189,6 +190,9 @@ app.get('/signin', function (req, res) {
 })
 
 app.post('/signin', function (req, res) {
+
+  sess = req.session;
+  sess.username = req.body.username;
 
   console.log(req.body.username);
   console.log(req.body.password);
@@ -232,7 +236,7 @@ app.post('/signin', function (req, res) {
 app.get('/dashboard', function (req, res) {
 
   sess = req.session;
-  if(sess.email){
+  if(sess.username){
     res.render('dashboard');
   } else {
     res.render('login');
@@ -244,7 +248,7 @@ app.get('/profile',
   //require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     sess = req.session;
-    if(sess.email){
+    if(sess.username){
       res.render('profile');
     } else {
       res.render('login');

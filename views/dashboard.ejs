@@ -96,45 +96,41 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
-      </div>
-      <div>
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="/home"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon glyphicon-th"></span> Tableau de Bord
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/dashboard">Planning</a></li>
-            <li><a href="/profile">Profil</a></li>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
+        </div>
+        <div>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="/home"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon glyphicon-th"></span> Tableau de Bord
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/dashboard">Planning</a></li>
+              <li><a href="/profile">Profil</a></li>
+            </ul>
+          </li>
+        </ul>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <a href="/report" class="btn btn-primary navbar-btn">Relever Mes Heures</a>
           </ul>
-        </li>
-      </ul>
-      </div>
-      <div>
-        <ul class="nav navbar-nav">
-          <a href="/report" class="btn btn-primary navbar-btn">Relever Mes Heures</a>
+        </div>
+        <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/signout"><span class="glyphicon glyphicon-log-out"></span> Se Déconnecter</a></li>
         </ul>
       </div>
-      <div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signout"><span class="glyphicon glyphicon-log-out"></span> Se Déconnecter</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="row">
-      <div class="jumbotron">
-        <h1>Chaudoudoux App Intervenants <span style="color : #ff3366">v0.1</span> DEMO</h1>
-        <p>La version de démonstration est volontairement restreinte à quelques fonctionalités</p>
-        <p>Pour les besoins de la démonstration et pour des raisons de sécurité les données affichées sont aussi volontairement fictives et sont remises par defaut chaque jour avec des données choisies par nos soins</p>
-        <p>Pour vous connecter à cette démonstration, l'utilisateur est <span style="color : #ff3366">unicorn1</span> et le mot de passe <span style="color : #ff3366">IAMateapot101</span></p>
+    </nav>
+    
+    <div class="container">
+      <div class="row">
+        <div id='calendar'></div>
       </div>
     </div>
-  </div>
+
 </body>
 </html>
