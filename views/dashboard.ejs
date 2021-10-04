@@ -96,16 +96,36 @@
   </head>
   <body>
 
-  <%- include partials/header.ejs %>
-
-  <% if (logged) { %>
-    <div class="container">
-      <div class="row">
-        <div id='calendar'></div>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
       </div>
+      <div>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="/home"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon glyphicon-th"></span> Tableau de Bord
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/dashboard">Planning</a></li>
+            <li><a href="/profile">Profil</a></li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <a href="/report" class="btn btn-primary navbar-btn">Relever Mes Heures</a>
+        </ul>
+      </div>
+      <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/signout"><span class="glyphicon glyphicon-log-out"></span> Se Déconnecter</a></li>
+      </ul>
     </div>
+  </nav>
 
-<% } else { %>
   <div class="container">
     <div class="row">
       <div class="jumbotron">
@@ -116,6 +136,5 @@
       </div>
     </div>
   </div>
-<% } %>
-  </body>
+</body>
 </html>

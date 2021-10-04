@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 require('dotenv').config();
 const mysql = require('mysql2');
 const ejs = require('ejs');
@@ -9,8 +10,18 @@ const CryptoJS = require('crypto-js');
 
 const app = express();
 app.set('view engine', 'ejs');
-
 app.use('/', express.static(__dirname + '/public'));
+
+//app.use(session({secret:'chaudoudoux'})); // DEPRICATED
+app.use(session({
+  secret: 'cookie',
+  name: 'chaudoudoux',
+  resave :false,
+  saveUninitialized: true,
+  cookie : {
+          maxAge:(1000 * 60 * 100)
+  }  
+}));
 
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
@@ -23,7 +34,8 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: false, save
 app.use(passport.initialize());
 app.use(passport.session());
 
-var logged = false;
+//var logged = false;
+var sess;
 var con;
 //const config = require('./config.json');
 const config = {"host" : process.env.host,"user" : process.env.user,"password" : process.env.password,"database" : process.env.database}
@@ -64,12 +76,13 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/', function (req, res) {
+  sess=req.session;
   res.render('index');
 });
 
 app.get('/home', function (req, res) {
-
-  res.render('home', {logged: logged});
+  sess=req.session;
+  res.render('home');
 /*
   con = mysql.createConnection({
     host: config.host,
@@ -92,39 +105,37 @@ app.get('/home', function (req, res) {
 
 });
 
-app.get('/login',
-  function(req, res){
+
+app.get('/login', function(req, res){
+  sess = req.session;
+  if(sess.email){
+    res.redirect('dashboard');
+  } else {
     res.render('login');
-  });
+  }
+});
 
-app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
+  sess = req.session;
+  sess.email = req.body.email;
+  res.redirect('/');
+});
 
-app.get('/logout',
-  function(req, res){
-    req.logout();
-    res.redirect('/');
+app.get('/logout', function(req, res){
+  req.session.destroy(function(err) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
   });
-
-app.get('/profile',
-  //require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('profile', { logged: logged});
-  });
-
-app.get('/tasks',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    var tasks = [{"id":1, "name":"Acheter le pain"}, {"id":2, "name":"Prendre un café"}];
-    res.render('tasks', { tasks: tasks });
-  });
+  //req.logout();
+  //res.redirect('/');
+});
 
 app.get('/signup', function (req, res) {
 
-  res.render('signup', {logged: logged});
+  res.render('signup');
 
 })
 
@@ -159,15 +170,22 @@ app.post('/signup', function (req, res) {
 app.get('/signout', function (req, res) {
 
   con.end();
-  logged = false;
-  res.render('signup');
-
+  req.session.destroy(function(err) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
+  });
 })
 
 app.get('/signin', function (req, res) {
-
-  res.render('signin', {logged: logged});
-
+  sess = req.session;
+  if(sess.email){
+    res.render('profile');
+  } else {
+    res.render('signin');
+  }
 })
 
 app.post('/signin', function (req, res) {
@@ -213,13 +231,36 @@ app.post('/signin', function (req, res) {
 
 app.get('/dashboard', function (req, res) {
 
-  res.render('dashboard', { logged: logged});
+  sess = req.session;
+  if(sess.email){
+    res.render('dashboard');
+  } else {
+    res.render('login');
+  }
 
 })
 
+app.get('/profile',
+  //require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    sess = req.session;
+    if(sess.email){
+      res.render('profile');
+    } else {
+      res.render('login');
+    }
+  });
+
+app.get('/tasks',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    var tasks = [{"id":1, "name":"Acheter le pain"}, {"id":2, "name":"Prendre un café"}];
+    res.render('tasks', { tasks: tasks });
+  });
+
 app.get('/report', function (req, res) {
 
-  res.render('report', { logged: logged});
+  res.render('report');
 
 })
 
