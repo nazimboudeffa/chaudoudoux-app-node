@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 04 oct. 2021 à 17:14
+-- Généré le : lun. 04 oct. 2021 à 17:12
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.1
 
@@ -47,6 +47,13 @@ CREATE TABLE `cdd_profile` (
   `city` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `cdd_profile`
+--
+
+INSERT INTO `cdd_profile` (`id`, `first_name`, `last_name`, `address`, `zip_code`, `city`) VALUES
+(1233, 'Alix', 'Godard', '32, rue Louise Lagarde', '35700', 'Rennes');
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +64,14 @@ CREATE TABLE `cdd_tasks` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `cdd_tasks`
+--
+
+INSERT INTO `cdd_tasks` (`id`, `name`) VALUES
+(1, 'Acheter le pain'),
+(2, 'Prendre un café');
 
 -- --------------------------------------------------------
 
@@ -70,6 +85,13 @@ CREATE TABLE `cdd_users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `cdd_users`
+--
+
+INSERT INTO `cdd_users` (`id`, `username`, `password`, `email`) VALUES
+(2147483647, 'unicorn', '1abcb33beeb811dca15f0ac3e47b88d9', 'unicorn@neoland.com');
 
 --
 -- Index pour les tables déchargées
