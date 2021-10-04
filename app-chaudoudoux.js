@@ -64,11 +64,13 @@ passport.deserializeUser(function(id, cb) {
 });
 
 app.get('/', function (req, res) {
-  res.render('index' , { logged: logged});
+  res.render('index');
 });
 
 app.get('/home', function (req, res) {
 
+  res.render('home', {logged: logged});
+/*
   con = mysql.createConnection({
     host: config.host,
     user: config.user,
@@ -86,6 +88,7 @@ app.get('/home', function (req, res) {
       res.send("There is no training");
     }
   });
+*/
 
 });
 

@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap Sign in Form with Facebook and Twitter Buttons</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-</head>
+<html>
+<title>Chaudoudoux | Bienvenue</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('images/alex-blajan-ThC_2PV783A-unsplash.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
 <body>
 
-  <%- include partials/header.ejs %>
-  
-  <div class="container">
-    <div class="row">
-      <div class="jumbotron">
-        <h1>Chaudoudoux App Intervenants <span style="color : #ff3366">v0.1</span> DEMO</h1>
-        <p>La version de démonstration est volontairement restreinte à quelques fonctionalités</p>
-        <p>Pour les besoins de la démonstration et pour des raisons de sécurité les données affichées sont aussi volontairement fictives et sont remises par defaut chaque jour avec des données choisies par nos soins</p>
-        <p>Pour vous connecter à cette démonstration, l'utilisateur est <span style="color : #ff3366">unicorn1</span> et le mot de passe <span style="color : #ff3366">IAMateapot101</span></p>
-      </div>
-    </div>
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    Les Applications Chaudoudoux
   </div>
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top">BIENVENUE</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <!--
+    <p class="w3-large w3-center"><a href="app-dev/dev-demo/dev-demo-v0.3" class="w3-button w3-pink">Serveur de Gestion v0.3</a></p>
+    <p class="w3-large w3-center"><a href="#" class="w3-button w3-pink">Application des Intervenants (projet)</a></p>
+    -->
+    <p class="w3-large w3-center"><a href="home" class="w3-button w3-pink">Entrer</a></p>
+  </div>
+  <div class="w3-display-bottomleft w3-padding-large">
+    <p>Ceci est une démonstration et en aucun cas une version de production, les données utilisées ici sont fictives et remises par defaut chaque jour</p>
+    <p>Pour toute information veuillez contacter <a href="http://lamaisondeschaudoudoux.fr">La Maison des Chaudoudoux</a></p>
+  </div>
+</div>
+
+<!-- Template w3schools.com/Coming Soon - Photo unsplash.com/Stuffed Animals  -->
 
 </body>
 </html>
