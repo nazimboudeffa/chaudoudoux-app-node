@@ -139,10 +139,10 @@ app.post('/signup', function (req, res) {
   var password = CryptoJS.MD5(req.body.password);
 
   con = mysql.createConnection({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database,
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
   });
 
   con.connect();
