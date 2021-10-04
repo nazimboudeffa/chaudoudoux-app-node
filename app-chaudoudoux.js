@@ -124,7 +124,7 @@ app.get('/tasks',
 
 app.get('/signup', function (req, res) {
 
-  res.render('signup');
+  res.render('signup', {logged: logged});
 
 })
 
@@ -166,14 +166,7 @@ app.get('/signout', function (req, res) {
 
 app.get('/signin', function (req, res) {
 
-  con = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-  });
-
-  res.render('signin');
+  res.render('signin', {logged: logged});
 
 })
 

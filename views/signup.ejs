@@ -66,76 +66,64 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">La Maison des Chaudoudoux</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/"><span class="glyphicon glyphicon-home"></span> Accueil</a></a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="https://chaudoudoux.app">Quitter la DEMO</a></li>
-			<li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
-		</ul>
-	</div>
-</nav>
-<div class="container">
-	<div class="login-form">
-	    <form action="/signup" method="post">
-	        <h2 class="text-center">Sign up</h2>
-					<div class="form-group">
-						<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="username" class="form-control" name="username" placeholder="Username" required="required">
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="email" class="form-control" name="email" placeholder="Email" required="required">
-							</div>
-					</div>
-					<div class="form-group">
-	            <div class="input-group">
-	                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-	                <input type="password" class="form-control" name="password" placeholder="Create Password" required="required">
-	            </div>
-	        </div>
-					<div class="form-group">
-							<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" class="form-control" name="repassword" placeholder="Repeat Password" required="required">
-							</div>
-					</div>
-					<div class="form-group">
-							<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-									<input type="text" class="form-control" name="phone" placeholder="Phone Number" required="required">
-							</div>
-					</div>
-					<div class="form-group input-group">
-				    <div class="input-group-addon">
-							<span class="input-group-text"> <i class="fa fa-home"></i> </span>
-						</div>
-						<select class="form-control">
-							<option>Famille</option>
-							<option>Intervenant</option>
-						</select>
-					</div> <!-- form-group end.// -->
-	        <div class="form-group">
-	            <button type="submit" class="btn btn-primary login-btn btn-block">Sign up</button>
-	        </div>
-			<div class="or-seperator"><i>or</i></div>
-	        <p class="text-center">Sign up with your social media account</p>
-	        <div class="text-center social-btn">
-	            <a href="/login" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+	
+	<%- include partials/header.ejs %>
 
-							<a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
-	        </div>
-	    </form>
-	    <p class="text-center text-muted small">Already have an account? <a href="/signin">Sign in here!</a></p>
+	<div class="container">
+		<div class="login-form">
+			<form action="/signup" method="post">
+				<h2 class="text-center">Sign up</h2>
+						<div class="form-group">
+							<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										<input type="username" class="form-control" name="username" placeholder="Username" required="required">
+								</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+										<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+								</div>
+						</div>
+						<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						<input type="password" class="form-control" name="password" placeholder="Create Password" required="required">
+					</div>
+				</div>
+						<div class="form-group">
+								<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+										<input type="password" class="form-control" name="repassword" placeholder="Repeat Password" required="required">
+								</div>
+						</div>
+						<div class="form-group">
+								<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+										<input type="text" class="form-control" name="phone" placeholder="Phone Number" required="required">
+								</div>
+						</div>
+						<div class="form-group input-group">
+						<div class="input-group-addon">
+								<span class="input-group-text"> <i class="fa fa-home"></i> </span>
+							</div>
+							<select class="form-control">
+								<option>Famille</option>
+								<option>Intervenant</option>
+							</select>
+						</div> <!-- form-group end.// -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary login-btn btn-block">Sign up</button>
+				</div>
+				<div class="or-seperator"><i>or</i></div>
+				<p class="text-center">Sign up with your social media account</p>
+				<div class="text-center social-btn">
+					<a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
+					<a href="#" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
+				</div>
+			</form>
+			<p class="text-center text-muted small">Already have an account? <a href="/signin">Sign in here!</a></p>
+		</div>
 	</div>
-</div>
 </body>
 </html>
